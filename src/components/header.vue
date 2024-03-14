@@ -20,11 +20,11 @@ export default {
   <div class="header">
     <div class="logo-block">
       <div class="logo">
-        <router-link to="/" style="text-decoration: none; color: #fff">BAI KAZAN</router-link>
+        <router-link to="/Restaurant" style="text-decoration: none; color: #fff">BAI KAZAN</router-link>
       </div>
     </div>
     <div class="nav-block">
-      <div class="nav-item"><a href="/menu">Меню</a></div>
+      <div class="nav-item"><a href="/Restaurant/menu">Меню</a></div>
       <div class="nav-item"><a href="#">Банкеты</a></div>
       <div class="nav-item"><a href="#">Доставка</a></div>
       <div class="nav-item"><a href="#">Контакты</a></div>
