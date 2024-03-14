@@ -5,7 +5,7 @@ import vLanding from '../components/ladning.vue'
 import vMenu from '../components/menu.vue'
 const routes = [
     {
-        path: '/',
+        path: '/Restaurant',
         components: {
             default: vLanding,
             vHeader,
@@ -13,7 +13,7 @@ const routes = [
         }
     },
     {
-        path: '/menu',
+        path: '/Restaurant/menu',
         components: {
             default: vMenu,
             vHeader,
