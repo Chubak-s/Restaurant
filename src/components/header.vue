@@ -24,7 +24,7 @@ export default {
       </div>
     </div>
     <div class="nav-block">
-      <div class="nav-item"><a href="/Restaurant/menu">Меню</a></div>
+      <div class="nav-item"><router-link to="/Restaurant/menu" style="text-decoration: none; color: #fff">Меню</router-link></div>
       <div class="nav-item"><a href="#">Банкеты</a></div>
       <div class="nav-item"><a href="#">Доставка</a></div>
       <div class="nav-item"><a href="#">Контакты</a></div>
