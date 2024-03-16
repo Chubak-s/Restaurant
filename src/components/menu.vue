@@ -34,6 +34,7 @@ export default {
 
 <template>
   <div class="menu">
+    <div class="blank"></div>
     <div class="nav-menu">
       <div class="nav-item-menu active-item">плов</div>
       <div class="nav-item-menu">горячие блюда</div>
@@ -58,15 +59,21 @@ export default {
   </div>
 </template>
 <style scoped>
+.blank{
+  height: 10vh;
+}
 .nav-menu{
   display: flex;
   justify-content: space-around;
   height: 10vh;
+  width: 100%;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   align-items: center;
   border-top: 1px solid #0E2827;
   border-bottom: 1px solid #0E2827;
+  position: fixed;
+  background: #fff;
 }
 .nav-item-menu{
   border-radius: 20px;
@@ -83,7 +90,8 @@ export default {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 32px;
-  height: 10vh;
+  padding-top: 10vh;
+  height: 20vh;
 }
 .cardsSection{
   display: flex;

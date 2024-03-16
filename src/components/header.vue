@@ -32,7 +32,7 @@ export default {
     <div class="cart-block">
       <div class="cart">
         <img src="../assets/cart.png" alt="cart" class="icon-cart">
-        Корзина
+        <router-link to="/Restaurant/cart" class="link">Корзина</router-link>
       </div>
     </div>
   </div>

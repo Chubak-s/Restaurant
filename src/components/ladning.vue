@@ -21,6 +21,7 @@ export default {
 
 <template>
   <div class="landing">
+    <div class="blank"></div>
     <div class="jumbotron">
       <div class="img">
         <div class="logo">BAI KAZAN</div>
@@ -166,6 +167,9 @@ export default {
 </template>
 
 <style scoped>
+.blank{
+  height: 10vh;
+}
 .jumbotron{
   height: 90vh;
   background: #222;
@@ -285,7 +289,7 @@ export default {
   text-align: center;
 }
 .line-under-tittle{
-  width: 80vw
+  width: 100%
 }
 .line3{
   width: 10%;

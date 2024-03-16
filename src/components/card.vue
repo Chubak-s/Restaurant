@@ -26,6 +26,11 @@ export default {
     return {
 
     }
+  },
+  methods:{
+    addToCart(){
+
+    }
   }
 }
 </script>
@@ -37,7 +42,7 @@ export default {
     <div class="description">{{description}}</div>
     <div class="bottom-part">
       <div class="price">{{price}} ₽</div>
-      <div class="addToCart">В корзину</div>
+      <div class="addToCart" @click="addToCart()">В корзину</div>
     </div>
   </div>
 </template>
@@ -75,5 +80,6 @@ export default {
   padding: 10px;
   background: #DFDFDF;
   text-align: center;
+  cursor: pointer;
 }
 </style>

@@ -16,9 +16,13 @@ export default {
 </script>
 
 <template>
+  <div class="cart">
 
+  </div>
 </template>
 
 <style scoped>
-
+.cart{
+  height: 100vh;
+}
 </style>
