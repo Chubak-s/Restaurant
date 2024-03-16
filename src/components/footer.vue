@@ -38,10 +38,10 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0E2827;
-  color: #fff;
+  background: #FFCF9D;
+  color: #0e2827;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 16px;
   height: 10vh;
 }
@@ -52,8 +52,8 @@ export default {
   gap: 5px
 }
 .logo{
-  font-family: 'Halant', serif;
-  font-weight: 300;
+  font-family: "Philosopher", sans-serif;
+  font-weight: 400;
   font-size: 24px;
 }
 </style>

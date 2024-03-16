@@ -1,5 +1,6 @@
 <script>
-import {store} from '/src/vuex/store.js'
+import {store} from "@/vuex/store.js";
+
 export default {
   name: 'landing',
   components: {},
@@ -8,18 +9,12 @@ export default {
       arrayOfDishes: store.getters.getWeekDishesList,
     }
   },
-  methods: {
-    loadMap(){
-      const map = document.getElementById('map')
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A0564d7dca7e402db66ebc08b8c44f1b5662ff8c5d15f27ce9b4b745e97791821&amp;width=979&amp;height=599&amp;lang=ru_RU&amp;scroll=true";
-      map.appendChild(script)
-    },
+  methods:{
+    loadMap: store.getters.getMap
   },
   mounted() {
     //загрузка карты
-    this.loadMap();
+    this.loadMap()
   },
 }
 </script>
@@ -31,7 +26,7 @@ export default {
         <div class="logo">BAI KAZAN</div>
         <div class="freeDelivery">
           <hr class="line">
-          <p>бесплатная доставка</p>
+          <p>БЕСПЛАТНАЯ ДОСТАВКА</p>
           <hr class="line">
         </div>
         <div class="moveToOrder">
@@ -41,13 +36,13 @@ export default {
     </div>
     <div class="description">
       <div class="ornaments">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
-        <img src="../assets/ornament.png" alt="" class="ornament2">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
-        <img src="../assets/ornament.png" alt="" class="ornament2">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
-        <img src="../assets/ornament.png" alt="" class="ornament2">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament2">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament2">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament2">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
       </div>
       <div class="text-block">
         <div class="title">
@@ -56,17 +51,50 @@ export default {
           <hr class="line-title">
         </div>
         <div class="text"> Наша кухня – это уникальное слияние восточных вкусов с современными кулинарными тенденциями, чтобы удовлетворить самые изысканные вкусы наших посетителей. Мы также гордимся нашим высоким уровнем обслуживания. Наши приветливые официанты готовы окунуть вас в мир восточного гостеприимства. И если вы захотите насладиться нашими вкусами и атмосферой дома, мы предлагаем вам услугу доставки на дом. Независимо от того, где вы находитесь, вы сможете заказать наши блюда и насладиться уникальным вкусом на своем столе. Приходите к нам и откройте для себя уникальный мир восточной  кухни. Добро пожаловать!</div>
-<!--        <hr class="line-under-tittle">-->
       </div>
+      <hr class="line-under-tittle">
       <div class="ornaments">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
-        <img src="../assets/ornament.png" alt="" class="ornament2">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
-        <img src="../assets/ornament.png" alt="" class="ornament2">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
-        <img src="../assets/ornament.png" alt="" class="ornament2">
-        <img src="../assets/ornament.png" alt="" class="ornament1">
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament2">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament2">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament2">-->
+<!--        <img src="../assets/ornament.png" alt="" class="ornament1">-->
       </div>
+      <div class="text-block2">
+        <div class="text-title">Вдохновляющая обстановка</div>
+        <div class="container">
+          <div class="container-block">
+            <div class="container-block-icon">
+              <img src="../assets/icon1.png" alt="icon" height="100%">
+            </div>
+            <div class="container-block-text">
+              <h4>Уютные кресла</h4>
+              Расслабьтесь с чашкой чая в уютной обстановке.
+            </div>
+          </div>
+          <div class="container-block">
+            <div class="container-block-icon">
+              <img src="../assets/icon2.png" alt="icon" height="100%">
+            </div>
+            <div class="container-block-text">
+              <h4>Аутентичный декор</h4>
+              Наши интерьеры отразят восточный колорит для истинных ценителей.
+            </div>
+          </div>
+          <div class="container-block">
+            <div class="container-block-icon">
+              <img src="../assets/icon3.png" alt="icon" height="100%">
+            </div>
+            <div class="container-block-text">
+              <h4>Заботливый персонал</h4>
+              Наш персонал внимателен к потребностям каждого гостя.
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="line-under-tittle">
     </div>
     <div class="dishesOfWeek">
       <div class="title">
@@ -117,6 +145,7 @@ export default {
         <div class="moveToMenuBtn">перейти в меню</div>
       </div>
     </div>
+    <hr class="line-under-tittle">
     <div class="informationPage">
       <div class="contacts">
         <h4>КОНТАКТЫ</h4>
@@ -139,7 +168,7 @@ export default {
 <style scoped>
 .jumbotron{
   height: 90vh;
-  background: #0E2827;
+  background: #222;
   z-index: 0;
   color: #fff;
   display: flex;
@@ -158,17 +187,16 @@ export default {
   align-items: flex-end;
   justify-content: center;
   height: 60vh;
-  font-family: 'Halant', serif;
+  font-family: "Philosopher", sans-serif;
   font-weight: 400;
-  font-size: 72px;
-  -webkit-text-stroke: 1px black;
+  font-size: 150px;
 
 }
 .freeDelivery{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
 }
@@ -189,20 +217,22 @@ export default {
   width: 20%;
   font-size: 24px;
   font-family: 'Montserrat', sans-serif;
-  color: #fff;
+  color: #FFCF9D;
   background: #0E2827;
-  font-weight: 400;
-  border: 1px solid #fff;
+  font-weight: 300;
+  border: 1px solid #FFCF9D;
 }
 .orderBtn:hover{
-  border: 1px solid #FDB704;
-  color: #FDB704;
+  background: #606060;
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 .description{
-  height: 100vh;
-  background: #fff;
+  height: 160vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  background: #0e2827;
+  color: #FFCF9D;
 }
 .ornaments{
   height: 20vh;
@@ -219,14 +249,14 @@ export default {
   transform: scaleY(-1);
 }
 .text-block, .dishesOfWeek{
-  padding-right: 10%;
-  padding-left: 10%;
   height: 50vh;
   font-family: 'Montserrat', sans-serif;
 }
 .dishesOfWeek{
   height: 100vh;
   border-top: 1px solid #0E2827;
+  background: #0e2827;
+  color: #FFCF9D;
 }
 .title{
   height: 15vh;
@@ -242,6 +272,7 @@ export default {
 .text-title{
   font-size: 20px;
   font-weight: 600;
+  text-transform: uppercase;
   text-align: center;
 }
 .text{
@@ -254,7 +285,7 @@ export default {
   text-align: center;
 }
 .line-under-tittle{
-  width: 100%;
+  width: 80vw
 }
 .line3{
   width: 10%;
@@ -267,7 +298,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:20px
+  gap:20px;
 }
 .cardDish{
   width: 300px;
@@ -329,18 +360,20 @@ export default {
   width: 25%;
   font-weight: 500;
   font-size: 22px;
-  border: 1px solid #0E2827;
+  border: 1px solid #FFCF9D;
+  border-radius: 10px;
   text-transform: uppercase;
   text-align: center;
-  padding: 5px;
+  padding: 10px;
   cursor: pointer;
 }
 .moveToMenuBtn:hover{
-  background: #0E2827;
   color: white;
   transition: 0.6s;
 }
 .informationPage{
+  background: #0e2827;
+  color: #FFCF9D;
   border-top: 1px solid #0E2827;
   height: 90vh;
   padding: 5%;
@@ -360,5 +393,43 @@ export default {
   line-height: 50px;
   font-size: 18px;
   font-weight: 300;
+}
+.text-block2{
+  height: 60vh;
+  font-family: 'Montserrat', sans-serif;
+  padding-right: 15%;
+  padding-left: 15%;
+}
+.text-block2 .text-title{
+  display: flex;
+  height: 10vh;
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+.container-block{
+  width: 30%;
+  height: 40vh;
+}
+.container-block-icon{
+  height: 10vh;
+}
+.container-block-text h4{
+  font-size: 20px;
+  font-weight: 400;
+  color: #FFCF9D;
+  line-height: normal;
+}
+.container-block-text{
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 10px;
+  font-weight: 200;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 </style>
