@@ -1,10 +1,16 @@
 <script>
+import {store} from "@/vuex/store.js";
+
 export default {
   name: 'card',
   components:{
 
   },
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true
@@ -29,7 +35,13 @@ export default {
   },
   methods:{
     addToCart(){
-
+      const objectID = this.id;
+      const menu = store.state.menu;
+      menu.forEach((item)=> {
+        if (item.id === objectID){
+          store.state.cart.push(item)
+        }
+      })
     }
   }
 }
@@ -81,5 +93,8 @@ export default {
   background: #DFDFDF;
   text-align: center;
   cursor: pointer;
+}
+.addToCart:active{
+  background: #fdb704;
 }
 </style>

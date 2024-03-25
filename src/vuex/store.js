@@ -12,10 +12,25 @@ export const store = new Vuex.Store({
             {id: 2, name: 'Плов чайханский', price:'550', description:'', img: dish2URL},
             {id: 3, name: 'Плов самаркандский', price:'690', description:'', img: dish3URL}
         ],
-        pilaf:[
-            {id: 1, name: 'Плов ташкентский с телятиной', price: '590', description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной телятиной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf1URL},
-            {id: 2, name: 'Плов ташкентский с бараниной', price: '590', description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной бараниной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf2URL}
+        categories:[
+            {name:'Плов', items: []},
+            {name:'Горячие блюда', items: []},
+            {name:'Салаты', items: []},
+            {name:'Закуски', items: []},
+            {name:'Японская кухня', items: []},
+            {name:'Пицца', items: []},
+            {name:'Супы', items: []},
+            {name:'Мангал', items: []},
+            {name:'Напитки', items: []},
+            {name:'Соусы', items: []},
+            {name:'Десерты', items: []},
         ],
+        menu:[
+            {id: 'dish1', name: 'Плов ташкентский с телятиной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной телятиной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf1URL, category: 'pilaf'},
+            {id: 'dish2', name: 'Плов ташкентский с бараниной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной бараниной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf2URL, category: 'pilaf'}
+        ],
+        sum: 10,
+        cart:[],
         loadMap(){
             const map = document.getElementById('map')
             const script = document.createElement('script')
@@ -29,12 +44,39 @@ export const store = new Vuex.Store({
         getWeekDishesList: state => {
             return state.weekDishList;
         },
-        getPilafList: state => {
-            return state.pilaf;
+        getCategoriesList: state => {
+            state.menu.forEach((item)=> {
+                if (item.category === 'pilaf')
+                    state.categories[0].items.push(item)
+                if (item.category === 'meals')
+                    state.categories[1].items.push(item)
+                if (item.category === 'salad')
+                    state.categories[2].items.push(item)
+                if (item.category === 'snacks')
+                    state.categories[3].items.push(item)
+                if (item.category === 'japan')
+                    state.categories[4].items.push(item)
+                if (item.category === 'pizza')
+                    state.categories[5].items.push(item)
+                if (item.category === 'soups')
+                    state.categories[6].items.push(item)
+                if (item.category === 'grill')
+                    state.categories[7].items.push(item)
+                if (item.category === 'drinks')
+                    state.categories[8].items.push(item)
+                if (item.category === 'souses')
+                    state.categories[9].items.push(item)
+                if (item.category === 'dessert')
+                    state.categories[10].items.push(item)
+            })
+            return []
         },
         getMap: state => {
             return state.loadMap;
-        }
+        },
+        getCategories: state => {
+            return state.categories;
+        },
     },
     mutations: {},
     actions: {

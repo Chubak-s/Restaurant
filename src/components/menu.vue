@@ -9,7 +9,7 @@ export default {
   },
   data(){
     return {
-      pilafList: store.getters.getPilafList,
+      categories: store.getters.getCategories,
     }
   },
   methods:{
@@ -19,48 +19,74 @@ export default {
       console.log(event.target)
       event.target.classList.add('active-item')
     },
+    showCategoriesList(){
+      store.getters.getCategoriesList
+    },
     clickActiveItem(){
       const navItems = document.querySelectorAll(".nav-item-menu");
       navItems.forEach(item => {
         item.addEventListener('click', this.activeCategory);
       });
+    },
+    smoothScroll(){
+      const anchors = document.querySelectorAll('a[href*="#"]')
+
+      for (let anchor of anchors) {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+
+          const blockID = anchor.getAttribute('href').substr(1)
+
+          document.getElementById(blockID).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          })
+        })
+      }
     }
   },
   mounted() {
     this.clickActiveItem()
+    this.smoothScroll()
   },
+  created() {
+    this.showCategoriesList()
+  }
 }
 </script>
 
 <template>
   <div class="menu">
-    <div class="blank"></div>
-    <div class="nav-menu">
-      <div class="nav-item-menu active-item">плов</div>
-      <div class="nav-item-menu">горячие блюда</div>
-      <div class="nav-item-menu">салаты</div>
-      <div class="nav-item-menu">закуски</div>
-      <div class="nav-item-menu">японская кухня</div>
-      <div class="nav-item-menu">пицца</div>
-      <div class="nav-item-menu">супы</div>
-      <div class="nav-item-menu">мангал</div>
-      <div class="nav-item-menu">напитки</div>
-      <div class="nav-item-menu">соусы</div>
-      <div class="nav-item-menu">десерты</div>
-    </div>
+    <nav class="nav-menu">
+      <a href ="#0" class="nav-item-menu active-item" >плов</a>
+      <a href ="#1" class="nav-item-menu">горячие блюда</a>
+      <a href ="#2" class="nav-item-menu">салаты</a>
+      <a href ="#3" class="nav-item-menu">закуски</a>
+      <a href ="#4" class="nav-item-menu">японская кухня</a>
+      <a href ="#5" class="nav-item-menu">пицца</a>
+      <a href ="#6" class="nav-item-menu">супы</a>
+      <a href ="#7" class="nav-item-menu">мангал</a>
+      <a href ="#8" class="nav-item-menu">напитки</a>
+      <a href ="#9" class="nav-item-menu">соусы</a>
+      <a href ="#10" class="nav-item-menu">десерты</a>
+    </nav>
     <div class="menu-content">
-      <div class="title">Плов</div>
-      <div class="cardsSection">
-        <div v-for="item in pilafList" :key="item.id">
-          <card :name="item.name" :img="item.img" :price="item.price" :description="item.description"></card>
+      <div v-for="(category,index) in categories">
+        <div :id=index class="title">{{category.name}}</div>
+        <div class="cardsSection">
+          <div v-for="item in category.items">
+            <card :id="item.id" :name="item.name" :img="item.img" :price="item.price" :description="item.description"></card>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
-.blank{
-  height: 10vh;
+.menu{
+  margin: 0;
+  padding: 10vh 0 0;
+  box-sizing: border-box;
 }
 .nav-menu{
   display: flex;
@@ -72,10 +98,11 @@ export default {
   align-items: center;
   border-top: 1px solid #0E2827;
   border-bottom: 1px solid #0E2827;
-  position: fixed;
   background: #fff;
 }
 .nav-item-menu{
+  text-decoration: none;
+  color: #222;
   border-radius: 20px;
   padding: 8px;
   cursor: pointer;
@@ -84,7 +111,7 @@ export default {
   background: #FDB704;
 }
 .menu-content{
-  padding: 5%;
+  padding: 10vh 5% 5%;
 }
 .title{
   font-family: 'Montserrat', sans-serif;
