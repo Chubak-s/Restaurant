@@ -1,29 +1,16 @@
-# untitled
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+# Сайт ресторана "BAI KAZAN "
+## Описание:
+Это сайт ресторана восточной кухни. Проект представляет собой frontend для сайта ресторна. Для хранения объектов использовался интсрумент Vuex. Проект состоит из множества независимых компонентов, а с помощью Vue router комоненты объединяются в страницу. Для деплоинга проекта в gitHub Actions был написан CI/CD pipeline. Веб сайт доступен по ссылке https://chubak-s.github.io/Restaurant.
+## Функционал:
+Реализованы:
++ Меню, с возможносью добавить блюдо в корзину;
++ Удаление товара из корзины;
++ Оформление заказа;
++ Лендинг;
+## Технологии: 
+* Vue.js 3
+* HTML5
+* CSS
+* JavaScipt
+## Скриншоты с сайта:
+![image](image.png)
