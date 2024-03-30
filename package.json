@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
     "vue": "^3.4.15",
+    "vue-carousel": "^0.18.0",
     "vue-router": "^4.3.0",
     "vuex": "^4.1.0"
   },

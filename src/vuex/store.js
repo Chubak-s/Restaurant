@@ -1,16 +1,21 @@
 import Vuex from 'vuex';
 import dish1URL from '/src/assets/dish1.png'
-import dish2URL from '/src/assets/dish2.png'
-import dish3URL from '/src/assets/dish3.png'
 import pilaf1URL from '/src/assets/pilaf1.png'
 import pilaf2URL from '/src/assets/pilaf1.png'
+import sale from '/src/assets/sale.png'
 
 export const store = new Vuex.Store({
     state: {
-        weekDishList: [
-            {id: 1, name: 'Плов узбекский', price:'590', description:'', img: dish1URL},
-            {id: 2, name: 'Плов чайханский', price:'550', description:'', img: dish2URL},
-            {id: 3, name: 'Плов самаркандский', price:'690', description:'', img: dish3URL}
+        DishList: [
+            {title: "Горячие блюда", img: dish1URL},
+            {title: "Салаты", img: dish1URL},
+            {title: "Япоская кухня", img: dish1URL},
+            {title: "Пицца", img: dish1URL},
+            {title: "Супы", img: dish1URL},
+            {title: "Мангал", img: dish1URL},
+            {title: "Напитки", img: dish1URL},
+            {title: "Десерты", img: dish1URL},
+
         ],
         categories:[
             {name:'Плов', items: []},
@@ -28,6 +33,9 @@ export const store = new Vuex.Store({
         menu:[
             {id: 'dish1', name: 'Плов ташкентский с телятиной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной телятиной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf1URL, category: 'pilaf'},
             {id: 'dish2', name: 'Плов ташкентский с бараниной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной бараниной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf2URL, category: 'pilaf'}
+        ],
+        stocks:[
+            sale, sale, sale, sale, sale,
         ],
         sum: 10,
         cart:[],

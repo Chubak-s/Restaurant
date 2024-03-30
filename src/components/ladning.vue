@@ -1,12 +1,14 @@
 <script>
 import {store} from "@/vuex/store.js";
+import Category from "@/components/category.vue";
 
 export default {
   name: 'landing',
-  components: {},
+  components: {Category},
   data() {
     return {
       arrayOfDishes: store.getters.getWeekDishesList,
+      dishList: store.state.DishList,
     }
   },
   methods:{
@@ -31,7 +33,7 @@ export default {
           <hr class="line">
         </div>
         <div class="moveToOrder">
-          <button class="orderBtn">заказать сейчас</button>
+          <button class="orderBtn"><router-link to="/Restaurant/menu" class="link">заказать сейчас</router-link></button>
         </div>
       </div>
     </div>
@@ -95,58 +97,17 @@ export default {
           </div>
         </div>
       </div>
-      <hr class="line-under-tittle">
     </div>
     <div class="dishesOfWeek">
-      <div class="title">
-        <hr class="line3">
-        <div class="text-title">Блюда недели</div>
-        <hr class="line3">
-      </div>
-      <div></div>
+      <hr class="line3">
+      <span class="title">МЕНЮ</span>
       <div class="listOfDishes">
-        <div class="btnDish">
-          <img src="../assets/leftBtn.png" alt="leftBtn" width="50">
-        </div>
-        <div class="cardDish">
-          <img :src='this.arrayOfDishes[0].img' alt="1" class="dishImg">
-          <div class="dishDescription">
-            <div class="name">{{this.arrayOfDishes[0].name}}</div>
-            <div class="bottomPart">
-              <div class="price">{{this.arrayOfDishes[0].price}} ₽</div>
-              <div class="addToCart">В корзину</div>
-            </div>
-          </div>
-        </div>
-        <div class="cardDish mainDish">
-          <img :src='this.arrayOfDishes[1].img' alt="1" class="dishImg">
-          <div class="dishDescription">
-            <div class="name">{{this.arrayOfDishes[1].name}}</div>
-            <div class="bottomPart">
-              <div class="price">{{this.arrayOfDishes[1].price}} ₽</div>
-              <div class="addToCart">В корзину</div>
-            </div>
-          </div>
-        </div>
-        <div class="cardDish">
-          <img :src='this.arrayOfDishes[2].img' alt="1" class="dishImg">
-          <div class="dishDescription">
-            <div class="name">{{this.arrayOfDishes[2].name}}</div>
-            <div class="bottomPart">
-              <div class="price">{{this.arrayOfDishes[2].price}} ₽</div>
-              <div class="addToCart">В корзину</div>
-            </div>
-          </div>
-        </div>
-        <div class="btnDish">
-          <img src="../assets/rightBtn.png" alt="rightBtn" width="50">
+        <div v-for="dish in dishList">
+          <category :title=dish.title :img=dish.img></category>
         </div>
       </div>
-      <div class="moveToMenu">
-        <div class="moveToMenuBtn">перейти в меню</div>
-      </div>
+      <hr class="line3">
     </div>
-    <hr class="line-under-tittle">
     <div class="informationPage">
       <div class="contacts">
         <h4>КОНТАКТЫ</h4>
@@ -257,7 +218,8 @@ export default {
   font-family: 'Montserrat', sans-serif;
 }
 .dishesOfWeek{
-  height: 100vh;
+  height: 120vh;
+  font-size: 30px;
   border-top: 1px solid #0E2827;
   background: #0e2827;
   color: #FFCF9D;
@@ -289,11 +251,11 @@ export default {
   text-align: center;
 }
 .line-under-tittle{
-  width: 100%
+  width: 100%;
 }
 .line3{
-  width: 10%;
-  color: #0E2827;
+  width: 80vw;
+  margin: 0 auto;
 }
 .listOfDishes{
   padding-top: 40px;
@@ -301,6 +263,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   gap:20px;
 }
@@ -435,5 +398,9 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.link{
+  text-decoration: none;
+  color: #FFCF9D;
 }
 </style>

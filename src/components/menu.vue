@@ -1,10 +1,12 @@
 <script>
 import Card from "@/components/card.vue";
 import {store} from "@/vuex/store.js";
+import Stocks from "@/components/stocks.vue";
 
 export default {
   name: 'menu',
   components:{
+    Stocks,
     Card
   },
   data(){
@@ -13,6 +15,10 @@ export default {
     }
   },
   methods:{
+    /**
+     * Active category.
+     * @param event
+     */
     activeCategory(event){
       const activeItem = document.querySelector('.active-item')
       activeItem.classList.remove('active-item')
@@ -39,7 +45,7 @@ export default {
 
           document.getElementById(blockID).scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
+            block: 'start',
           })
         })
       }
@@ -57,6 +63,7 @@ export default {
 
 <template>
   <div class="menu">
+    <stocks></stocks>
     <nav class="nav-menu">
       <a href ="#0" class="nav-item-menu active-item" >плов</a>
       <a href ="#1" class="nav-item-menu">горячие блюда</a>
@@ -111,13 +118,15 @@ export default {
   background: #FDB704;
 }
 .menu-content{
-  padding: 10vh 5% 5%;
+  padding-right: 5%;
+  padding-left: 5%;
 }
 .title{
+  display: flex;
+  align-items: end;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 32px;
-  padding-top: 10vh;
   height: 20vh;
 }
 .cardsSection{
