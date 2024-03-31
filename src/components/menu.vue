@@ -2,23 +2,23 @@
 import Card from "@/components/card.vue";
 import {store} from "@/vuex/store.js";
 import Stocks from "@/components/stocks.vue";
+import Popup from "@/components/popup.vue";
 
 export default {
   name: 'menu',
   components:{
+    Popup,
     Stocks,
     Card
   },
   data(){
     return {
       categories: store.getters.getCategories,
+      actualItem: undefined,
+      isVisibleModal: false,
     }
   },
   methods:{
-    /**
-     * Active category.
-     * @param event
-     */
     activeCategory(event){
       const activeItem = document.querySelector('.active-item')
       activeItem.classList.remove('active-item')
@@ -49,6 +49,15 @@ export default {
           })
         })
       }
+    },
+    openModal(item){
+      if (item!==undefined){
+        this.actualItem = item;
+        this.isVisibleModal = true;
+      }
+    },
+    closeModal(){
+      this.isVisibleModal = false;
     }
   },
   mounted() {
@@ -82,9 +91,13 @@ export default {
         <div :id=index class="title">{{category.name}}</div>
         <div class="cardsSection">
           <div v-for="item in category.items">
-            <card :id="item.id" :name="item.name" :img="item.img" :price="item.price" :description="item.description"></card>
+            <card :id="item.id" :name="item.name" :img="item.img" :price="item.price" :description="item.description" @click="openModal(item)"></card>
           </div>
         </div>
+      </div>
+      <div class="popup-wrapper" v-show="isVisibleModal">
+        <popup :item="this.actualItem"></popup>
+        <i class="material-icons close" @click="closeModal()"></i>
       </div>
     </div>
   </div>
@@ -133,5 +146,12 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 2vw;
+}
+.close{
+  position: fixed;
+  top: 25vh;
+  right: 22vw;
+  color: #222;
+  cursor: pointer;
 }
 </style>

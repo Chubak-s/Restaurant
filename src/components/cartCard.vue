@@ -38,8 +38,24 @@ export default {
     addOne(){
       this.count++;
       store.state.sum+=this.price
-      console.log(store.state.sum)
+    },
+    removeOne(){
+      if (this.count-1>0){
+        this.count--;
+        store.state.sum-=this.price
+      }
+    },
+    removeItem(){
+      if ( store.state.sum-this.price*this.count>0){
+        store.state.sum-=this.price*this.count;
+        const index = store.state.cart.findIndex(item => item.id === this.id);
+        store.state.cart.splice(index, 1)
+      }
     }
+  },
+  mounted() {
+    store.state.sum+=this.price
+    console.log(store.state.cart)
   },
   store: store,
 }
@@ -50,11 +66,11 @@ export default {
     <div class="name">{{name}}</div>
     <div class="price">{{price}} ₽</div>
     <div class="controlPanel">
-      <div class="add" @click="addOne">+</div>
+      <div class="button" @click="addOne">+</div>
       <div class="count">{{count}}</div>
-      <div class="minus">-</div>
+      <div class="button" @click="removeOne">-</div>
     </div>
-    <div class="delete">удалить</div>
+    <div class="button" @click="removeItem">удалить</div>
   </div>
   <hr>
 </template>
@@ -77,7 +93,7 @@ export default {
   justify-content: space-between;
   border: 1px solid #222;
 }
-.add{
+.button{
   cursor: pointer;
 }
 </style>
