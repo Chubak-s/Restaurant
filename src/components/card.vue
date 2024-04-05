@@ -65,17 +65,25 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  border-radius: 15px;
+  border: 1px solid #606060;
 }
 .name{
+  padding: 0 5%;
   font-weight: 700;
   color: #797979;
   font-size: 24px;
 }
 .description{
+  padding: 0 5%;
   font-size: 14px;
   color: #686466;
 }
+img{
+  border-radius: 14px 14px 0 0 ;
+}
 .bottom-part{
+  padding: 2% 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;

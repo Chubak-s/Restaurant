@@ -1,20 +1,35 @@
 import Vuex from 'vuex';
 import dish1URL from '/src/assets/dish1.png'
+
+import salad from '/src/assets/categories/salad.jpg'
+import japan from '/src/assets/categories/japan.jpg'
+import pizza from '/src/assets/categories/pizza.jpg'
+import soup from '/src/assets/categories/soup.jpg'
+import mangal from '/src/assets/categories/mangal.jpg'
+import drink from '/src/assets/categories/drink.jpg'
+import desert from '/src/assets/meals/manti.jpg'
+
 import pilaf1URL from '/src/assets/pilaf1.png'
 import pilaf2URL from '/src/assets/pilaf1.png'
+import manti from '/src/assets/meals/manti.jpg'
+import cezar from '/src/assets/salad/cezar.jpg'
+import hachapuri from '/src/assets/snacks/hachapuri.jpg'
+import shah from '/src/assets/mangal/shah.jpg'
+import cake from '/src/assets/desert/cake.jpg'
+
 import sale from '/src/assets/sale.png'
 
 export const store = new Vuex.Store({
     state: {
         DishList: [
             {title: "Горячие блюда", img: dish1URL},
-            {title: "Салаты", img: dish1URL},
-            {title: "Япоская кухня", img: dish1URL},
-            {title: "Пицца", img: dish1URL},
-            {title: "Супы", img: dish1URL},
-            {title: "Мангал", img: dish1URL},
-            {title: "Напитки", img: dish1URL},
-            {title: "Десерты", img: dish1URL},
+            {title: "Салаты", img: salad},
+            {title: "Японская кухня", img: japan},
+            {title: "Пицца", img: pizza},
+            {title: "Супы", img: soup},
+            {title: "Мангал", img: mangal},
+            {title: "Напитки", img: drink},
+            {title: "Десерты", img: desert},
 
         ],
         categories:[
@@ -31,8 +46,13 @@ export const store = new Vuex.Store({
             {name:'Десерты', items: []},
         ],
         menu:[
-            {id: 'dish1', name: 'Плов ташкентский с телятиной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной телятиной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf1URL, category: 'pilaf'},
-            {id: 'dish2', name: 'Плов ташкентский с бараниной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной бараниной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf2URL, category: 'pilaf'}
+            {id: '1', name: 'Плов ташкентский с телятиной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной телятиной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf1URL, category: 'pilaf'},
+            {id: '2', name: 'Плов ташкентский с бараниной', price: 590, description:'Рассыпчатый плов из узбекского риса Лазер с обжаренной бараниной, жёлтой и красной морковью, гороха нут и репчатого лука.', img:pilaf2URL, category: 'pilaf'},
+            {id: '3', name: 'Манты с бараниной', price: 590, description:'Традиционные узбекские манты, приготовленные на пару из тонкого домашнего теста и рубленого мяса молодого барашка с луком и специями. Подаются со сметаной', img:manti, category: 'meals'},
+            {id: '4', name: 'Цезарь с курицей', price: 590, description:'Салат с хрустящими листьями Романо в сочетании с розовыми помидорами, сыром Пармезан и пшеничными гренками с обжаренным куриным филе. Заправляется фирменным соусом Цезарь', img:cezar, category: 'salad'},
+            {id: '5', name: 'Хачапури по-аджарски', price: 590, description:'Мягкое воздушное хачапури с яйцом, сливочным маслом, моцареллой и молодым сулугуни с добавлением сливок', img:hachapuri, category: 'snacks'},
+            {id: '6', name: 'Шашлык из телятины', price: 590, description:'Мякоть телятины, приготовленная на мангале. Подается на хрустящем лаваше с маринованным луком, зернами граната и свежей зеленью', img:shah, category: 'grill'},
+            {id: '7', name: 'Три шоколада', price: 590, description:'Торт с насыщенным шоколадным брауни и нежным муссом из белого, молочного и черного шоколада. Украшается лепестком из шоколада', img:cake, category: 'dessert'},
         ],
         stocks:[
             sale, sale, sale, sale, sale,

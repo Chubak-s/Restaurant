@@ -8,7 +8,9 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      count: 1,
+    }
   },
   computed: {},
   methods: {}
@@ -18,19 +20,21 @@ export default {
 <template>
   <div class="v-popup" v-if="item!==undefined">
     <div class="v-popup_img">
-      <img :src="this.item.img" alt="img">
+      <img :src="this.item.img" alt="img" >
     </div>
     <div class="v-popup_content">
       <div class="name">{{this.item.name}}</div>
       <div class="category"></div>
-      <div class="price">{{this.item.price}} ₽</div>
-      <div class="buttons">
-        <div class="addToCart-btn" >Добавить в корзину</div>
-        <div class="like-btn" >favorite</div>
-      </div>
       <div class="info">
-        <span style="font-size: 28px; font-weight: bold">Описание</span><br>
         {{this.item.description}}
+      </div>
+      <div class="buttons">
+        <div class="manage">
+          <div>-</div>
+          <div>{{count}}</div>
+          <div>+</div>
+        </div>
+        <div class="addToCart-btn" >590 Р</div>
       </div>
     </div>
   </div>
@@ -46,22 +50,54 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 90vh;
-  width: 50vw;
-  font-family: 'PT Sans', sans-serif;
-}
-.v-popup_img{
-  height: 100%;
+  height: 70vh;
+  width: 75vw;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px;
+  border-radius: 10px;
 }
 img{
-
+  border-radius: 10px;
+  height: 100%;
 }
 .v-popup_content{
+  display: flex;
+  flex-direction: column;
   padding-left: 20px;
 }
 .name{
-  margin-top: 40px;
   font-size: 36px;
   font-weight: bold;
+}
+.info{
+  padding-top: 10px;
+}
+.buttons{
+  display: flex;
+  margin-top: auto;
+  padding: 10px;
+  height: 10vh;
+  justify-content: space-between;
+}
+.manage{
+  background: rgb(0, 0, 0, 10%);
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  font-size: 24px;
+  border-radius: 15px;
+  width: 45%;
+  align-items: center;
+}
+.addToCart-btn{
+  background: red;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  font-size: 24px;
+  border-radius: 15px;
+  width: 45%;
+  align-items: center;
+  color: #FFFFFF;
 }
 </style>
