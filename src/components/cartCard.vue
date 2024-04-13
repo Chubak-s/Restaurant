@@ -7,55 +7,46 @@ export default {
 
   },
   props: {
-    id: {
+    name: {
       type: String,
       required: true,
     },
-    name: {
-      type: String,
-      required: true
+    price: {
+      type: Number,
+      required: true,
     },
-    description: {
-      type: String,
-      required: true
-    },
-    img:{
-      type: String,
-      required: true
-    },
-    price:{
-      type: String,
-      required: true
-    },
+    count:{
+      type: Number,
+      required: true,
+    }
   },
   data(){
     return {
-      cart: store.state.cart,
-      count: 1,
+      curCount: this.count
     }
   },
   methods:{
     addOne(){
-      this.count++;
+      this.curCount++;
       store.state.sum+=this.price
     },
     removeOne(){
-      if (this.count-1>0){
-        this.count--;
+      if (this.curCount-1>0){
+        this.curCount--;
         store.state.sum-=this.price
       }
     },
     removeItem(){
-      if ( store.state.sum-this.price*this.count>0){
-        store.state.sum-=this.price*this.count;
+      if ( store.state.sum-this.price*this.curCount>=0){
+        store.state.sum-=this.price*this.curCount;
         const index = store.state.cart.findIndex(item => item.id === this.id);
         store.state.cart.splice(index, 1)
       }
-    }
+    },
   },
   mounted() {
-    store.state.sum+=this.price
     console.log(store.state.cart)
+    console.log(this.name)
   },
   store: store,
 }
@@ -66,9 +57,9 @@ export default {
     <div class="name">{{name}}</div>
     <div class="price">{{price}} ₽</div>
     <div class="controlPanel">
-      <div class="button" @click="addOne">+</div>
-      <div class="count">{{count}}</div>
       <div class="button" @click="removeOne">-</div>
+      <div class="count">{{curCount}}</div>
+      <div class="button" @click="addOne">+</div>
     </div>
     <div class="button" @click="removeItem">удалить</div>
   </div>

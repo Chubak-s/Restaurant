@@ -35,13 +35,6 @@ export default {
   },
   methods:{
     addToCart(){
-      const objectID = this.id;
-      const menu = store.state.menu;
-      menu.forEach((item)=> {
-        if (item.id === objectID){
-          store.state.cart.push(item)
-        }
-      })
     }
   }
 }
@@ -49,7 +42,9 @@ export default {
 
 <template>
   <div class="card">
-    <img :src='img' alt="img" width="100%">
+    <div class='dishImg'>
+      <img :src='img' alt="img" >
+    </div>
     <div class="name">{{name}}</div>
     <div class="description">{{description}}</div>
     <div class="bottom-part">
@@ -60,13 +55,19 @@ export default {
 </template>
 <style scoped>
 .card{
+  height: 55vh;
   width: 20vw;
   font-family: Montserrat,sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+  //border-radius: 15px;
+  //border: 1px solid #606060;
+}
+.card:hover{
   border-radius: 15px;
-  border: 1px solid #606060;
+  background-color: #f1f1f1;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 .name{
   padding: 0 5%;
@@ -78,9 +79,22 @@ export default {
   padding: 0 5%;
   font-size: 14px;
   color: #686466;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dishImg{
+  border-radius: 14px 14px 0 0 ;
+  width: 100%;
+  height: 30vh;
+  overflow: hidden;
 }
 img{
-  border-radius: 14px 14px 0 0 ;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .bottom-part{
   padding: 2% 5%;

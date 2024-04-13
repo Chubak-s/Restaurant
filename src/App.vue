@@ -3,6 +3,7 @@ import vFooter from './components/footer.vue'
 import vHeader from './components/header.vue'
 import vLanding from './components/ladning.vue'
 import vMenu from './components/menu.vue'
+
 export default {
   name: 'app',
   components:{
@@ -12,6 +13,7 @@ export default {
     vMenu,
   }
 }
+
 </script>
 
 <template>

@@ -1,4 +1,6 @@
 <script>
+import {store} from "@/vuex/store.js";
+
 export default {
   name: 'popup',
   props: {
@@ -13,7 +15,27 @@ export default {
     }
   },
   computed: {},
-  methods: {}
+  methods: {
+    addOne(){
+      this.count++;
+    },
+    removeOne(){
+      if (this.count-1>0){
+        this.count--;
+      }
+    },
+    addToCart(){
+      console.log(store.state.sum)
+      console.log(this.count)
+      console.log(this.item.price * this.count)
+      store.state.sum += this.item.price * this.count
+      store.state.isVisibleModal=false;
+      store.state.cart.push({name: this.item.name, price:this.item.price, count: this.count})
+    }
+  },
+  mounted() {
+
+  },
 }
 </script>
 
@@ -30,11 +52,11 @@ export default {
       </div>
       <div class="buttons">
         <div class="manage">
-          <div>-</div>
-          <div>{{count}}</div>
-          <div>+</div>
+          <div class="button" @click="removeOne">-</div>
+          <div class="count">{{count}}</div>
+          <div class="button" @click="addOne">+</div>
         </div>
-        <div class="addToCart-btn" >590 Р</div>
+        <div class="addToCart-btn" @click="addToCart"><img src="../assets/basket.png" class="icon">{{this.item.price*this.count}} ₽</div>
       </div>
     </div>
   </div>
@@ -92,12 +114,20 @@ img{
 .addToCart-btn{
   background: red;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
   padding: 5px;
-  font-size: 24px;
+  font-size: 20px;
   border-radius: 15px;
   width: 45%;
   align-items: center;
   color: #FFFFFF;
+  cursor: pointer;
+}
+.button{
+  cursor: pointer;
+}
+.icon{
+  height: 70%;
 }
 </style>

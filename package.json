@@ -12,12 +12,14 @@
     "@splidejs/splide": "^4.1.4",
     "material-design-icons-iconfont": "^6.7.0",
     "material-icons": "^1.13.12",
+    "node-telegram-bot-api": "^0.65.1",
     "vue": "^3.4.15",
     "vue-carousel": "^0.18.0",
     "vue-router": "^4.3.0",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.64.6",
     "@vitejs/plugin-vue": "^5.0.3",
     "vite": "^5.0.11"
   }

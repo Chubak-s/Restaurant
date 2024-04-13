@@ -6,6 +6,11 @@ import Popup from "@/components/popup.vue";
 
 export default {
   name: 'menu',
+  computed: {
+    store() {
+      return store
+    }
+  },
   components:{
     Popup,
     Stocks,
@@ -15,7 +20,6 @@ export default {
     return {
       categories: store.getters.getCategories,
       actualItem: undefined,
-      isVisibleModal: false,
     }
   },
   methods:{
@@ -42,7 +46,7 @@ export default {
           e.preventDefault()
 
           const blockID = anchor.getAttribute('href').substr(1)
-
+      
           document.getElementById(blockID).scrollIntoView({
             behavior: 'smooth',
             block: 'start',
@@ -53,11 +57,20 @@ export default {
     openModal(item){
       if (item!==undefined){
         this.actualItem = item;
-        this.isVisibleModal = true;
+        store.state.isVisibleModal = true;
       }
     },
     closeModal(){
-      this.isVisibleModal = false;
+      store.state.isVisibleModal = false;
+    },
+    scrollToUp(){
+      const header = document.querySelector('.blank')
+
+
+      header.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
     }
   },
   mounted() {
@@ -72,19 +85,19 @@ export default {
 
 <template>
   <div class="menu">
-    <stocks></stocks>
+<!--    <stocks></stocks>-->
+    <div class="blank"></div>
     <nav class="nav-menu">
-      <a href ="#0" class="nav-item-menu active-item" >плов</a>
-      <a href ="#1" class="nav-item-menu">горячие блюда</a>
-      <a href ="#2" class="nav-item-menu">салаты</a>
-      <a href ="#3" class="nav-item-menu">закуски</a>
-      <a href ="#4" class="nav-item-menu">японская кухня</a>
-      <a href ="#5" class="nav-item-menu">пицца</a>
-      <a href ="#6" class="nav-item-menu">супы</a>
-      <a href ="#7" class="nav-item-menu">мангал</a>
-      <a href ="#8" class="nav-item-menu">напитки</a>
-      <a href ="#9" class="nav-item-menu">соусы</a>
-      <a href ="#10" class="nav-item-menu">десерты</a>
+      <a href ="#0" class="nav-item-menu active-item">горячие блюда</a>
+      <a href ="#1" class="nav-item-menu">салаты</a>
+      <a href ="#2" class="nav-item-menu">закуски</a>
+      <a href ="#3" class="nav-item-menu">японская кухня</a>
+      <a href ="#4" class="nav-item-menu">пицца</a>
+      <a href ="#5" class="nav-item-menu">супы</a>
+      <a href ="#6" class="nav-item-menu">мангал</a>
+      <a href ="#7" class="nav-item-menu">напитки</a>
+      <a href ="#8" class="nav-item-menu">соусы</a>
+      <a href ="#9" class="nav-item-menu">десерты</a>
     </nav>
     <div class="menu-content">
       <div v-for="(category,index) in categories">
@@ -95,9 +108,12 @@ export default {
           </div>
         </div>
       </div>
-      <div class="popup-wrapper" v-show="isVisibleModal">
+      <div class="popup-wrapper" v-show="store.state.isVisibleModal">
         <popup :item="this.actualItem"></popup>
         <i class="material-icons close" @click="closeModal()"></i>
+      </div>
+      <div class="up" @click="scrollToUp()">
+        <img src="../assets/up.png" alt="up" height="20">
       </div>
     </div>
   </div>
@@ -105,8 +121,11 @@ export default {
 <style scoped>
 .menu{
   margin: 0;
-  padding: 10vh 0 0;
+  padding: 0;
   box-sizing: border-box;
+}
+.blank{
+  height: 10vh;
 }
 .nav-menu{
   display: flex;
@@ -116,8 +135,7 @@ export default {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   align-items: center;
-  border-top: 1px solid #0E2827;
-  border-bottom: 1px solid #0E2827;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
   background: #fff;
 }
 .nav-item-menu{
@@ -163,5 +181,18 @@ export default {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.6);
+}
+.up{
+  position: fixed;
+  bottom: 12vh;
+  right: 5vw;
+  width: 50px;
+  height: 50px;
+  background-color: #fdb704;
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 </style>

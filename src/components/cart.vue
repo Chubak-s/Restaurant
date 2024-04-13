@@ -1,6 +1,8 @@
 <script>
 import {store} from "@/vuex/store.js";
 import CartCard from "@/components/cartCard.vue";
+import Order from "@/components/order.vue"
+import Popup from "@/components/popup.vue";
 export default {
   name: 'cart',
   computed: {
@@ -9,53 +11,66 @@ export default {
     }
   },
   components:{
+    Order,
+    Popup,
     CartCard,
   },
   props: {
   },
   data(){
     return {
+      isVisibleModal: false,
       storing: store.state.cart,
-      count: store.state.cart.length,
       deliveryCost: 350,
     }
   },
   methods: {
+    openModal(){
+      this.isVisibleModal = true;
+    },
+    closeModal(){
+      this.isVisibleModal = false;
+    }
   },
   mounted() {
-    console.log(this.cart)
+    for (let value of this.storing){
+      console.log(value.name)
+      console.log(value.price)
+      console.log(value.count)
+    }
    },
 }
 </script>
 
 <template>
   <div class="cart">
-    <div class="v-cart">
-      <div class="main-section">
-        <div class="items">
-          <div class="title">Корзина</div>
-          <div v-for="item in storing" class="cart-section">
-            <cartCard :id="item.id" :name="item.name" :img="item.img" :price="item.price" :description="item.description"></cartCard>
-          </div>
-        </div>
-        <div class="order">
-          <div class="sum-title">Сумма заказа</div>
-          <div class="order-info">
-            <div class="left-section-order">
-              <div v-if="count%10<5 && count%10!==0" class="order-text">{{this.count}} товара на сумму</div>
-              <div v-else class="order-text">{{this.count}} товаров на сумму</div>
-              <div class="order-text">Стоимость доставки</div>
-              <div class="total">Итого: </div>
-            </div>
-            <div class="right-section-order">
-              <div class="sum">{{store.state.sum}} руб.</div>
-              <div class="sum">{{this.deliveryCost}} руб.</div>
-              <div class="total-sum">{{store.state.sum+this.deliveryCost}} руб.</div>
-            </div>
-          </div>
-          <div class="makeOrder" @click="">Перейти к оформлению заказа</div>
+    <div class="main-section">
+      <div class="items">
+        <div class="title">Корзина</div>
+        <div v-for="item in storing" class="cart-section">
+          <cartCard :name="item.name" :price="item.price" :count="item.count"></cartCard>
         </div>
       </div>
+      <div class="order">
+        <div class="sum-title">Сумма заказа</div>
+        <div class="order-info">
+          <div class="left-section-order">
+            <div class="order-text">Сумма заказа</div>
+            <div class="order-text">Стоимость доставки</div>
+            <div class="total">Итого: </div>
+          </div>
+          <div class="right-section-order">
+            <div class="sum">{{store.state.sum}} руб.</div>
+            <div class="sum">{{this.deliveryCost}} руб.</div>
+            <div class="total-sum">{{store.state.sum+this.deliveryCost}} руб.</div>
+          </div>
+        </div>
+        <div class="makeOrder" @click="openModal()">Перейти к оформлению заказа</div>
+      </div>
+    </div>
+    <div class="popup-wrapper" v-show="isVisibleModal">
+      <Order></Order>
+      <i class="material-icons close" @click="closeModal()"></i>
     </div>
   </div>
 </template>
@@ -139,5 +154,19 @@ export default {
   background: #797979;
   transition: 0.2s;
 }
-
+.popup-wrapper{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.close{
+  position: fixed;
+  top: 11vh;
+  right: 5vw;
+  color: #fff;
+  cursor: pointer;
+}
 </style>

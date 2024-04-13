@@ -49,7 +49,6 @@ export default {
   font-size: 16px;
   height: 10vh;
   position: fixed;
-  z-index: 999;
 }
 .logo-block, .cart-block{
   width: 15%;
