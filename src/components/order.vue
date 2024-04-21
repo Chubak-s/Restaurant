@@ -26,7 +26,7 @@ export default {
       const option = document.querySelector('input[name="pay"]:checked').value;
       switch (option){
         case 'Cash':
-          this.optionToPay = "Наличными курьеру";
+          this.optionToPay = "Наличными";
           break;
         case 'Card':
           this.optionToPay = "Перевод картой";
